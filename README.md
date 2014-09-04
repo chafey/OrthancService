@@ -21,7 +21,9 @@ This C# project provides the Orthanc to run as service on Microsoft Windows Envi
 
 # Building and Developing
 
-* Download the latest Orthanc executable from the OrthancServer.org web site. Please see Installation section below as the default configuration for the Orthanc executable may have a different file name than how this program has been configured at the time of release.
+* Download the latest Orthanc executable from the Orthanc-Server.com web site. I have installed it under C:\Orthanc during the development.
+
+* Please see Installation section below as the default configuration for the Orthanc executable may have a different file name than how this program has been configured at the time of release.
 
 * This project was originally developed on Microsoft Visual Studio 2013 Professional. Building it on other versions such as Express version has not been tested. 
 
