@@ -13,7 +13,15 @@ This is provided as a GPL v2 Product. Enjoy!
 
 This C# project provides the Orthanc to run as service on Microsoft Windows Environment.
 
+# Why Would You Want To Run Orthac as Service?
+
+* On server (type) deployment, you would want to launch Orthanc when the server boots up.
+* While Orthac crashing is a fairly rare event, it could happen on just about any program, so you would want to have some program to try restarting it a few times automatically. Especially it is a server deployment.
+
+
 # Building and Developing
+
+* Download the latest Orthanc executable from the OrthancServer.org web site. Please see Installation section below as the default configuration for the Orthanc executable may have a different file name than how this program has been configured at the time of release.
 
 * This project was originally developed on Microsoft Visual Studio 2013 Professional. Building it on other versions such as Express version has not been tested. 
 
@@ -27,10 +35,15 @@ Note that we are planning to add an MSI installer and most of this information w
 
 ## Manual Service Installation Scripts Included
 
+You must be a local *Administrator* to be able to run these BAT files.
+The Path to the Orthanc is most likely wrong. You will need to edit the Path in the file to match your configurations.
+
 You can manually install/uninstall OrthancService.exe as a Windows Service using two .BAT files included. This will be handy during the devlopment to test the service without a need to build the MSI insatller. Files are;
 
 * Manual-Install-Service.bat
 * Manual-Remove-Service.bat
+
+
 
 # How It Works
 
