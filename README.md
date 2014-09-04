@@ -3,6 +3,8 @@ OrthancService
 
 Run Orthac as Windows Service
 Veresion 0.00
+Originally Written by Manabu Tokunaga, Lury LLC.
+This is provided as a GPL v2 Product. Enjoy!
 
 # What is OrthancService
 
