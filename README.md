@@ -29,13 +29,13 @@ You can manually install/uninstall OrthancService.exe as a Windows Service using
 
 # How It Works
 
-* When it starts it takes configuration values stored in OrthancService.exe.config file, it contains
+When it starts it takes configuration values stored in OrthancService.exe.config file, it contains
 
-** ExeAbsolutePath: Points to the Orthanc executable. For example this can be C:\Orthanc\Orthanc-0.8.2-Release.exe
+* ExeAbsolutePath: Points to the Orthanc executable. For example this can be C:\Orthanc\Orthanc-0.8.2-Release.exe
 
-** ExeArgumentsOrLeaveBlank: You can add command line arugments sent to Orthanc or just leave it blanc.
+* ExeArgumentsOrLeaveBlank: You can add command line arugments sent to Orthanc or just leave it blanc.
 
-** ProcessCheckIntervalFloatSec: This is the pollin interval in number of seconds to check if the Orthanc process is still alive. You can specify any fraction of a second (e.g., 2.25 for 2500 milliseconds).
+* ProcessCheckIntervalFloatSec: This is the pollin interval in number of seconds to check if the Orthanc process is still alive. You can specify any fraction of a second (e.g., 2.25 for 2500 milliseconds).
 
 ## About Two Phase Retry
 
