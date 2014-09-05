@@ -16,10 +16,10 @@ Pre-requisites
 1. Visual Studio 2013 Professional (may work on other versions but has not been tested)
 2. NSIS 2.46 (may work with other versions but has not been tested)
 
-Building
---------
+Building The Installer
+----------------------
 
-1. Open the solution, make sure "Release" build configuration is selected
+1. Open the solution, make sure "Release" is your active build configuration 
 2. Copy the build of Orthanc.exe you want to build into the installer into the "InstallerAssets" directory.  Note that the exe must be named Orthanc.exe!
 3. Build the solution (F6)
 
