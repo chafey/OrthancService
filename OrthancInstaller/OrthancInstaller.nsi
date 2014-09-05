@@ -116,6 +116,11 @@ Section
 		"http://127.0.0.1:8042/app/explorer.html" \
 		"$INSTDIR\OrthancLogo.ico" "0"
 
+	!insertmacro CreateInternetShortcut \
+		"$SMPROGRAMS\${APPNAME}\Orthanc Web Site.url" \
+		"http://www.orthanc-server.com/" \
+		"$INSTDIR\OrthancLogo.ico" "0"
+
 	CreateShortCut "$SMPROGRAMS\${APPNAME}\uninstall.lnk" "$INSTDIR\uninstall.exe" "" 
 	CreateShortCut "$SMPROGRAMS\${APPNAME}\README.lnk" "$INSTDIR\README.txt" "" 
 	

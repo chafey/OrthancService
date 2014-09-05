@@ -3,7 +3,8 @@ Orthanc For Windows
 
 Orthanc For Windows includes windows specific extensions for Orthanc such as an installer and
 a windows service.  The installer and windows service both require the .Net 4.0 client framework
-already be installed on the machine.
+already be installed on the machine.  You can learn more about Orthanc by 
+visiting http://www.orthanc-server.com/
 
 The installer will prompt you for two folders - one to use for program files and one to
 use for data.  The data folder is used for orthanc storage, orthanc database, orthanc logs 
@@ -32,3 +33,5 @@ Troubleshooting
 3. Verify that no other applications are using the ports that Orthanc is listening on
 4. Check the Orthanc logs in the data folder (e.g. C:\Orthanc\Logs)
 5. Check the Orthanc Service log in %APPDATA%\Orthanc\OrthancService.log
+6. Check the Orthanc FAQ: https://code.google.com/p/orthanc/wiki/FAQ
+7. Post a request for help to the Orthanc Users google group: https://groups.google.com/forum/#!forum/orthanc-users 
