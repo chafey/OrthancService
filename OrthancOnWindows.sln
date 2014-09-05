@@ -10,7 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{2C932CE6-637D-4F6D-9652-AF3923B9B461}"
 	ProjectSection(SolutionItems) = preProject
 		OrthancService\LICENSE = OrthancService\LICENSE
-		OrthancService\README.md = OrthancService\README.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrthancInstaller", "OrthancInstaller\OrthancInstaller.csproj", "{46CB448A-8C71-4409-93BA-1C4F5AAC50E5}"
