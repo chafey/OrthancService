@@ -1,0 +1,5 @@
+﻿{
+    "OrthancPath" :  "C:/Program Files (x86)/Orthanc/Orthanc.exe",
+    "CommandLineArguments" :  "C:/Orthanc/Configuration.json --logdir=C:/Orthanc/Logs",
+    "WorkingDirectory" :  "C:/Program Files (x86)/Orthanc/"
+}

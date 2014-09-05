@@ -28,29 +28,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  **/
 
-using System.ServiceProcess;
-
-namespace OrthancService
+namespace OrthancInstaller
 {
-    public partial class Services : ServiceBase
+    // This is a dummy program that exists only so I can use the Visual Studio build system to invoke the NSIS installer
+    class Program
     {
-        public Services(OrthancServiceConfiguration config)
+        static void Main(string[] args)
         {
-            InitializeComponent();
-            _pm = new ProcessManager(config, this);
         }
-
-        protected override void OnStart(string[] args)
-        {
-            _pm.Start();
-        }
-
-        protected override void OnStop()
-        {
-            _pm.Stop();
-        }
-
-        private readonly ProcessManager _pm;
     }
 }
-

@@ -28,29 +28,33 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  **/
 
-using System.ServiceProcess;
+using System.IO;
 
-namespace OrthancService
+namespace ConfigurationFileWriter
 {
-    public partial class Services : ServiceBase
+    class Program
     {
-        public Services(OrthancServiceConfiguration config)
+        static void PatchFile(string filePath, string dataFolder, string programFolder)
         {
-            InitializeComponent();
-            _pm = new ProcessManager(config, this);
+            var fileContents = File.ReadAllText(filePath);
+            fileContents = fileContents.Replace("C:/Orthanc", dataFolder);
+            fileContents = fileContents.Replace("C:/Program Files (x86)/Orthanc", programFolder);
+            File.WriteAllText(filePath, fileContents);
         }
 
-        protected override void OnStart(string[] args)
+        static void Main(string[] args)
         {
-            _pm.Start();
-        }
+            if (args.Length != 2)
+            {
+                return;
+            }
 
-        protected override void OnStop()
-        {
-            _pm.Stop();
-        }
+            var dataFolder = args[0].Replace("\\", "/");
+            var programFolder = args[1].Replace("\\", "/");
 
-        private readonly ProcessManager _pm;
+            PatchFile(Path.Combine(dataFolder, "OrthancServiceConfiguration.json"), dataFolder, programFolder);
+            PatchFile(Path.Combine(dataFolder, "Configuration.json"), dataFolder, programFolder);
+
+        }
     }
 }
-
