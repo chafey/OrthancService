@@ -35,6 +35,8 @@ WriteINIStr "${FILENAME}.url" "InternetShortcut" "IconIndex" "${ICONINDEX}"
 !macroend
 
 
+
+
 ;Pages
 	
 !insertmacro MUI_PAGE_WELCOME
@@ -72,9 +74,19 @@ Function DataDirShowPage
 !insertmacro MUI_HEADER_TEXT "Choose Data Location" "Choose the folder in which Orthanc will store its data and configuration"
 FunctionEnd
 
+Function .onInit
+	# Check to make sure we have .net 4.0 installed
+	ClearErrors
+	ReadRegStr $0 HKLM "Software\Microsoft\Net Framework Setup\NDP\v4.0\Client" Version 
+	${If} ${Errors}
+		# key does not exist
+		MessageBox MB_OK "You must have .NET Framework v4.0 or higher installed to install Orthanc."
+		Abort
+	${EndIf}
+FunctionEnd
+
 # default section start; every NSIS script has at least one section.
 Section
-
 	# Install program files
 	SetOutPath $INSTDIR
 	File "..\InstallerAssets\Orthanc.exe"

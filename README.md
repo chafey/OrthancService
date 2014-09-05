@@ -13,7 +13,7 @@ Building
 Pre-requisites
 --------------
 
-1. Visual Studio 2013 Professional (may work on earlier versions but has not been tested)
+1. Visual Studio 2013 Professional (may work on other versions but has not been tested)
 2. NSIS 2.46 (may work with other versions but has not been tested)
 
 Building
