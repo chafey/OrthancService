@@ -22,6 +22,19 @@ InstallDir "$PROGRAMFILES32\${APPNAME}"
 ShowInstDetails show
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 
+# Use orthanc logos for the installer icon and header image
+!define MUI_ICON "..\InstallerAssets\OrthancLogo.ico"
+!define MUI_HEADERIMAGE
+!define MUI_HEADERIMAGE_BITMAP "..\InstallerAssets\OrthancLogo.bmp"
+!define MUI_HEADERIMAGE_RIGHT
+
+!macro CreateInternetShortcut FILENAME URL ICONFILE ICONINDEX
+WriteINIStr "${FILENAME}.url" "InternetShortcut" "URL" "${URL}"
+WriteINIStr "${FILENAME}.url" "InternetShortcut" "IconFile" "${ICONFILE}"
+WriteINIStr "${FILENAME}.url" "InternetShortcut" "IconIndex" "${ICONINDEX}"
+!macroend
+
+
 ;Pages
 	
 !insertmacro MUI_PAGE_WELCOME
@@ -35,7 +48,7 @@ ShowInstDetails show
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_FUNCTION "InstallationComplete"
-!define MUI_FINISHPAGE_RUN_TEXT "Launch Orthonc Explorer"
+!define MUI_FINISHPAGE_RUN_TEXT "View README"
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -48,7 +61,7 @@ ShowInstDetails show
  
 Function InstallationComplete
 	# Launch the orthonc explorer
-	ExecShell "open" "http://127.0.0.1:8042/app/explorer.html"
+	ExecShell "open" "$INSTDIR\README.txt"
 FunctionEnd
 
 Function InstDirPageLeave
@@ -66,6 +79,7 @@ Section
 	SetOutPath $INSTDIR
 	File "..\InstallerAssets\Orthanc.exe"
 	File "..\InstallerAssets\README.txt"
+	File "..\InstallerAssets\OrthancLogo.ico"
 	File "..\OrthancService\bin\Release\OrthancService.exe"
 	File "..\OrthancService\bin\Release\NLog.dll"
 	File "..\OrthancService\bin\Release\OrthancService.exe.config"
@@ -85,7 +99,11 @@ Section
 	# Add Start Menu Items
 	SetShellVarContext all
 	CreateDirectory "$SMPROGRAMS\${APPNAME}"
-	WriteINIStr "$SMPROGRAMS\${APPNAME}\Orthanc Explorer.url" "InternetShortcut" "URL" "http://127.0.0.1:8042/app/explorer.html"
+	!insertmacro CreateInternetShortcut \
+		"$SMPROGRAMS\${APPNAME}\Orthanc Explorer.url" \
+		"http://127.0.0.1:8042/app/explorer.html" \
+		"$INSTDIR\OrthancLogo.ico" "0"
+
 	CreateShortCut "$SMPROGRAMS\${APPNAME}\uninstall.lnk" "$INSTDIR\uninstall.exe" "" 
 	CreateShortCut "$SMPROGRAMS\${APPNAME}\README.lnk" "$INSTDIR\README.txt" "" 
 	

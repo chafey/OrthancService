@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrthancInstaller", "Orthanc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InstallerAssets", "InstallerAssets", "{5DB5B378-6A96-4B7A-A08A-FF53ED959378}"
 	ProjectSection(SolutionItems) = preProject
+		InstallerAssets\OrthancLogo.bmp = InstallerAssets\OrthancLogo.bmp
+		InstallerAssets\OrthancLogo.ico = InstallerAssets\OrthancLogo.ico
 		InstallerAssets\README.txt = InstallerAssets\README.txt
 	EndProjectSection
 EndProject

@@ -28,7 +28,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  **/
 
-
 using System;
 using System.ServiceProcess;
 using NLog;
@@ -47,14 +46,15 @@ namespace OrthancService
         {
             Logger.Info("Service Starting");
 
+            // The path to the configuration file must be passed in
             if (args.Length < 1)
             {
                 Logger.Error("Path to configuration file not specified, aborting");
                 return;
             }
 
+            // Load the configuration
             OrthancServiceConfiguration config;
-
             try
             {
                 Logger.Info("Reading configuration from {0}", args[0]);
@@ -66,6 +66,7 @@ namespace OrthancService
                 return;
             }
 
+            // Start up the service
             if (Environment.UserInteractive)
             {
                 var pm = new ProcessManager(config, null);

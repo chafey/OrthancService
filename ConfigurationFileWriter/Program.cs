@@ -28,33 +28,57 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  **/
 
+using System;
 using System.IO;
 
 namespace ConfigurationFileWriter
 {
+    /// <summary>
+    /// This program is called by the installer to patch the various file paths in the configuration
+    /// files used by Orthanc and OrthancService to point to the directory paths specified by the
+    /// user during installation.  While this should be possible to do in NSIS, I was unsuccesful
+    /// at getting the nsJSON plugin to parse/read the configuration files so I gave up and
+    /// decided to write this program instead.  
+    /// 
+    /// NOTE: The patching does a very simple search and replace on the files and is therefore
+    /// dependent upon specific strings (and casing) in the configuration files.  A simple
+    /// search and replace is used because the comments in the configuration files would be
+    /// lost if the file was saved back out.
+    /// </summary>
     class Program
     {
         static void PatchFile(string filePath, string dataFolder, string programFolder)
         {
+            Console.WriteLine("Patching File " + filePath);
             var fileContents = File.ReadAllText(filePath);
             fileContents = fileContents.Replace("C:/Orthanc", dataFolder);
             fileContents = fileContents.Replace("C:/Program Files (x86)/Orthanc", programFolder);
+            fileContents = fileContents.Replace("OrthancStorage", dataFolder + "/OrthancStorage");
             File.WriteAllText(filePath, fileContents);
         }
 
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             if (args.Length != 2)
             {
-                return;
+                Console.WriteLine("USAGE:");
+                Console.WriteLine("  ConfigurationFileWriter [dataFolder] [programFolder]");
+                return -1;
             }
 
-            var dataFolder = args[0].Replace("\\", "/");
-            var programFolder = args[1].Replace("\\", "/");
-
-            PatchFile(Path.Combine(dataFolder, "OrthancServiceConfiguration.json"), dataFolder, programFolder);
-            PatchFile(Path.Combine(dataFolder, "Configuration.json"), dataFolder, programFolder);
-
+            try
+            {
+                var dataFolder = args[0].Replace("\\", "/");
+                var programFolder = args[1].Replace("\\", "/");
+                PatchFile(Path.Combine(dataFolder, "OrthancServiceConfiguration.json"), dataFolder, programFolder);
+                PatchFile(Path.Combine(dataFolder, "Configuration.json"), dataFolder, programFolder);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Unexpected Exception - " + ex);
+                return -2;
+            }
+            return 0;
         }
     }
 }

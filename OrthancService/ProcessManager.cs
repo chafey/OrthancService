@@ -28,8 +28,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  **/
 
-
-
 using System;
 using System.Diagnostics;
 using System.ServiceProcess;
@@ -38,9 +36,12 @@ using NLog;
 
 namespace OrthancService
 {
+    /// <summary>
+    /// This class is responsible for launching Orthanc and restarting it if
+    /// it terminates unexpectedly.  
+    /// </summary>
     public class ProcessManager
     {
-
         public ProcessManager(OrthancServiceConfiguration config, ServiceBase serviceBase)
         {
             _config = config;
