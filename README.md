@@ -4,7 +4,7 @@ Orthanc On Windows
 This project contains the following windows specific extensions for Orthanc:
 
 * OrthancSerivce - A C# Windows Service that will launch the Orthanc server (and restart it if it crashes)
-* Installer - A NSIS installer for Orthanc
+* OrthancInstaller - A NSIS installer for Orthanc.  This is actually a dummy C# console application project that invokes nsis as a post build event.
 * ConfigurationFileWriter - A C# console application that will patch the configuration files during installation based on the selected folders
 
 Building
@@ -20,11 +20,10 @@ Building
 --------
 
 1. Open the solution, make sure "Release" build configuration is selected
-2. Copy the build of Orthanc.exe you want to build into the installer into the "InstallerAssets" directory.  
+2. Copy the build of Orthanc.exe you want to build into the installer into the "InstallerAssets" directory.  Note that the exe must be named Orthanc.exe!
 3. Build the solution (F6)
-4. Using windows explorer, right click on the Installer/OrthancInstaller.nsi and select "Compile NSIS Script".  
 
-The installer will be located in OrthancInstaller/OrthancInstaller.exe
+If everything builds OK, the installer will be located in OrthancInstaller/OrthancInstaller.exe
 
 FAQ
 ==============
