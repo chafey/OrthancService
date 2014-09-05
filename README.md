@@ -4,7 +4,7 @@ Orthanc On Windows
 This project contains the following windows specific extensions for Orthanc:
 
 * OrthancSerivce - A C# Windows Service that will launch the Orthanc server (and restart it if it crashes)
-* OrthancInstaller - A NSIS installer for Orthanc.  This is actually a dummy C# console application project that invokes nsis as a post build event.
+* OrthancInstaller - A NSIS installer for Orthanc. 
 * ConfigurationFileWriter - A C# console application that will patch the configuration files during installation based on the selected folders
 
 Building
@@ -25,9 +25,3 @@ Building
 
 If everything builds OK, the installer will be located in OrthancInstaller/OrthancInstaller.exe
 
-FAQ
-==============
-
-_Orthanc Service is running but I cannot connect to Orthan or send it DICOM_
-
-Check the Orthanc log in $(DATADIRECTORY)/Logs to see if that helps
